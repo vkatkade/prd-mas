@@ -16,8 +16,8 @@ class RedisManager:
             self.client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True, socket_connect_timeout=2)
             self.client.ping()
             self.use_mock = False
-        except redis.ConnectionError:
-            print("Warning: Redis not found at localhost:6379. Using mock in-memory state for development.")
+        except Exception as e:
+            print(f"Warning: Redis not found or timed out ({e}). Using mock in-memory state for development.")
             self.use_mock = True
 
     def set_session_state(self, session_id: str, state_dict: dict):
