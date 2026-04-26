@@ -13,7 +13,7 @@ _MOCK_REDIS = {}
 class RedisManager:
     def __init__(self):
         try:
-            self.client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
+            self.client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True, socket_connect_timeout=2)
             self.client.ping()
             self.use_mock = False
         except redis.ConnectionError:

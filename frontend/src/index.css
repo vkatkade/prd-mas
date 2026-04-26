@@ -1,56 +1,80 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @plugin "@tailwindcss/typography";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 @theme {
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   
-  --color-brand-500: #6366f1; /* Indigo */
-  --color-brand-400: #818cf8;
-  --color-accent-500: #a855f7; /* Purple */
-  --color-accent-400: #c084fc;
+  --color-brand-400: #6E79D6; /* Secondary */
+  --color-brand-500: #5E6AD2; /* Primary */
+  --color-accent-400: #4E5BBF; /* Primary Hover */
+  --color-accent-500: #5E6AD2;
   
-  --color-glass-bg: rgba(30, 41, 59, 0.6);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
-}
-
-@utility glass-panel {
-  background: var(--color-glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--color-glass-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-@utility text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, var(--color-brand-400), var(--color-accent-400));
+  --color-slate-900: #101014; /* Background */
+  --color-slate-800: #1B1B25; /* Neutral */
+  --color-slate-700: #2C2C3A; /* Border */
+  --color-slate-600: #8A8F98; /* Text Secondary */
+  --color-slate-500: #8A8F98;
+  --color-slate-400: #8A8F98;
+  --color-slate-300: #F1F1F4; /* Text Primary */
+  --color-slate-200: #F1F1F4;
+  
+  --color-rose-400: #EB5757; /* Error */
+  --color-amber-400: #F0C000; /* Warning */
+  --color-emerald-400: #3DD68C; /* Success */
 }
 
 body {
-  background: radial-gradient(circle at top right, #1e1b4b, #020617);
-  background-attachment: fixed;
-  color: #f8fafc;
-  min-height: 100vh;
+  background-color: var(--color-slate-900);
+  color: var(--color-slate-200);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
   margin: 0;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* Custom Scrollbar for dark mode */
+@utility glass-panel {
+  background-color: var(--color-slate-800);
+  border: 1px solid var(--color-slate-700);
+  border-radius: 8px;
+  /* Violet Issue drops heavy shadows for layered backgrounds */
+  box-shadow: none; 
+}
+
+@utility text-gradient {
+  color: var(--color-brand-500);
+}
+
+/* Violet Issue specific Input overrides */
+input[type="text"], textarea {
+  background-color: var(--color-slate-800) !important;
+  border: 1px solid var(--color-slate-700) !important;
+  border-radius: 6px !important;
+  color: var(--color-slate-200) !important;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: none !important;
+  border-color: var(--color-brand-500) !important;
+  box-shadow: 0 0 0 2px rgba(94, 106, 210, 0.15) !important;
+  ring: 0 !important;
+}
+
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+  background: var(--color-slate-900);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.5);
+  background: var(--color-slate-700);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.8);
+  background: var(--color-slate-600);
 }

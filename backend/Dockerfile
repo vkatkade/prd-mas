@@ -20,4 +20,4 @@ COPY . /app/
 EXPOSE 8080
 
 # Command to run the application (Cloud Run requires binding to 0.0.0.0:8080)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
